@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:functions/components/appbar.dart';
+import 'package:functions/components/fadein.dart';
+import 'package:simple_animations/simple_animations.dart';
+import 'package:flutter/animation.dart';
 
 //Various Webpages
 import 'screens/launcher.dart';
@@ -38,8 +41,8 @@ class _LaunchPageState extends State<LaunchPage> {
         child: Column(
           
           children: <Widget>[
-            FunctionsAppBar((widgetTitle[indexnumber] == "Home") ? "" : widgetTitle[indexnumber], size.width),
-            Text(size.width.toString(), style: TextStyle(color: Colors.white),)
+            FadeIn(1.0, FunctionsAppBar((widgetTitle[indexnumber] == "Home") ? "" : widgetTitle[indexnumber], size.width)),
+            FadeIn(1.3, widgetlist[indexnumber]),
             ],
         ),
       ),

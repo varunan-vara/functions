@@ -13,6 +13,7 @@ class FunctionsAppBar extends StatefulWidget {
 class _FunctionsAppBarState extends State<FunctionsAppBar> {
   String pageName;
   double bruh;
+  bool displayDropdown = false;
   _FunctionsAppBarState(this.pageName, this.bruh);
 
   Widget AppBarButtonWidget(context, width) {
@@ -46,18 +47,22 @@ class _FunctionsAppBarState extends State<FunctionsAppBar> {
                             TextStyle(fontFamily: "Open Sans", fontSize: 20)),
                     function: () {
                       js.context.callMethod(
-                          'open', ['https://stackoverflow.com/questions/ask']);
+                          'open', ['https://github.com/varunan-vara/functions']);
                     }),
               ],
             )
-          : Row(key: UniqueKey(), children: <Widget>[
+          : Column(key: UniqueKey(), children: <Widget>[
               RoundedButton(
                 title: Icon(
                   Icons.more_vert,
                   color: Color(0xff1c1c1c),
                 ),
-                function: () {},
-              )
+                function: () {
+                  setState(() {
+                    Navigator.pushNamed(context, "/");
+                  });
+                },
+              ),
             ]),
     );
   }
@@ -91,7 +96,7 @@ class _FunctionsAppBarState extends State<FunctionsAppBar> {
                 fontSize: 40,
               ),
             ),
-           AppBarButtonWidget(context, size.width)
+            AppBarButtonWidget(context, size.width)
           ],
         ));
   }
