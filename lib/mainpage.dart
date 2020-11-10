@@ -38,7 +38,8 @@ class _LaunchPageState extends State<LaunchPage> {
         child: Column(
           
           children: <Widget>[
-            FunctionsAppBar((widgetTitle[indexnumber] == "Home") ? "" : widgetTitle[indexnumber])
+            FunctionsAppBar((widgetTitle[indexnumber] == "Home") ? "" : widgetTitle[indexnumber], size.width),
+            Text(size.width.toString(), style: TextStyle(color: Colors.white),)
             ],
         ),
       ),

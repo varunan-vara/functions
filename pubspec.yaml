@@ -60,6 +60,23 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    - family: Crimson
+      fonts:
+        - asset: assets\fonts\Crimson\CrimsonText-Bold.ttf
+          weight: 700
+        - asset: assets\fonts\Crimson\CrimsonText-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets\fonts\Crimson\CrimsonText-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets\fonts\Crimson\CrimsonText-Regular.ttf
+          weight: 400
+        - asset: assets\fonts\Crimson\CrimsonText-SemiBold.ttf
+          weight: 600
+        - asset: assets\fonts\Crimson\CrimsonText-SemiBoldItalic.ttf
+          weight: 400
+          style: italic
     - family: Varela Round
       fonts: 
         - asset: assets\fonts\Varela_Round\VarelaRound-Regular.ttf

@@ -2,18 +2,80 @@ import 'package:flutter/material.dart';
 import 'dart:js' as js;
 import 'package:functions/components/roundedbutton.dart';
 
-class FunctionsAppBar extends StatelessWidget {
-  String pageName = "";
-  FunctionsAppBar(this.pageName);
+class FunctionsAppBar extends StatefulWidget {
+  String pageName;
+  double width;
+  FunctionsAppBar(this.pageName, this.width);
+
+  _FunctionsAppBarState createState() => _FunctionsAppBarState(pageName, width);
+}
+
+class _FunctionsAppBarState extends State<FunctionsAppBar> {
+  String pageName;
+  double bruh;
+  _FunctionsAppBarState(this.pageName, this.bruh);
+
+  Widget AppBarButtonWidget(context, width) {
+    return Container(
+      key: UniqueKey(),
+      child: (width >= 1000)
+          ? Row(
+              key: UniqueKey(),
+              children: <Widget>[
+                RoundedButton(
+                  title: Icon(
+                    Icons.home,
+                    color: Color(0xff1c1c1c),
+                  ),
+                  function: () {
+                    Navigator.pushNamed(context, "/");
+                  },
+                ),
+                RoundedButton(
+                  title: Icon(
+                    Icons.settings,
+                    color: Color(0xff1c1c1c),
+                  ),
+                  function: () {
+                    Navigator.pushNamed(context, "/settings");
+                  },
+                ),
+                RoundedButton(
+                    title: Text("Github",
+                        style:
+                            TextStyle(fontFamily: "Open Sans", fontSize: 20)),
+                    function: () {
+                      js.context.callMethod(
+                          'open', ['https://stackoverflow.com/questions/ask']);
+                    }),
+              ],
+            )
+          : Row(key: UniqueKey(), children: <Widget>[
+              RoundedButton(
+                title: Icon(
+                  Icons.more_vert,
+                  color: Color(0xff1c1c1c),
+                ),
+                function: () {},
+              )
+            ]),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
         margin: EdgeInsets.all(20),
         padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
         decoration: BoxDecoration(
           color: Color(0xfffafaff),
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -21,35 +83,15 @@ class FunctionsAppBar extends StatelessWidget {
             Text(
               //Title Text
               (pageName == "")
-                  ? "LetticeFunctions"
-                  : "LetticFunctions: " + pageName,
+                  ? "Lettice.Functions".toUpperCase()
+                  : "Lettic.Functions: " + pageName.toUpperCase(),
               style: TextStyle(
-                fontFamily: "Varela Round",
-                fontWeight: FontWeight.w800,
+                fontFamily: "Open Sans",
                 color: Color(0xff1c1c1c),
-                fontSize: 26,
+                fontSize: 40,
               ),
             ),
-            Row(
-              children: <Widget>[
-                RoundedButton(
-                  title: Icon(Icons.home, color: Color(0xff1c1c1c),),
-                  function: () {
-                    Navigator.pushNamed(context, "/");
-                  },
-                ),
-                RoundedButton(
-                  title: Icon(Icons.settings, color: Color(0xff1c1c1c),),
-                  function: () {
-                    Navigator.pushNamed(context, "/settings");
-                  },
-                ),
-                RoundedButton(
-                  title: Text("Github", style: TextStyle(fontFamily: "Open Sans", fontSize: 20)),
-                  function: () {js.context.callMethod('open', ['https://stackoverflow.com/questions/ask']);}
-                ),
-              ],
-            ),
+           AppBarButtonWidget(context, size.width)
           ],
         ));
   }

@@ -29,7 +29,7 @@ class _RoundedButtonState extends State<RoundedButton> {
         padding: EdgeInsets.symmetric(vertical:10, horizontal: 30),
         decoration: BoxDecoration(
           color: Color(0xffeef0f2),
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: titleicon
       ),
