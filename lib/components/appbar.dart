@@ -88,8 +88,8 @@ class _FunctionsAppBarState extends State<FunctionsAppBar> {
             Text(
               //Title Text
               (pageName == "")
-                  ? "Lettice.Functions".toUpperCase()
-                  : "Lettic.Functions: " + pageName.toUpperCase(),
+                  ? "Basic.Functions".toUpperCase()
+                  : "Basic.Functions: " + pageName.toUpperCase(),
               style: TextStyle(
                 fontFamily: "Open Sans",
                 color: Color(0xff1c1c1c),
